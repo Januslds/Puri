@@ -15,10 +15,11 @@ export class GameFormComponent implements OnInit {
 
   game: Game = {
     id: 0,
-    title: '',
-    description: '',
-    image: '',
-    created_at: new Date()
+    nombre: '',
+    categoria: '',
+    cantidad: 0,
+    precio: 0,
+    fecha_registro  : new Date()
   };
 
   edit: boolean = false;
@@ -41,7 +42,7 @@ export class GameFormComponent implements OnInit {
   }
 
   saveNewGame() {
-    delete this.game.created_at;
+    delete this.game.fecha_registro;
     delete this.game.id;
     this.gameService.saveGame(this.game)
       .subscribe(
@@ -54,7 +55,7 @@ export class GameFormComponent implements OnInit {
   }
 
   updateGame() {
-    delete this.game.created_at;
+    delete this.game.fecha_registro;
     this.gameService.updateGame(this.game.id, this.game)
       .subscribe(
         res => { 

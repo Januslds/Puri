@@ -3,14 +3,19 @@
     <div class="card-body">
       <form action="">
         <div class="form-group">
-          <input type="text" name="title" [(ngModel)]="game.title" placeholder="Title" class="form-control" autofocus>
+          <input type="text" name="nombre" [(ngModel)]="game.nombre" placeholder="Nombre" class="form-control" autofocus>
         </div>
         <div class="form-group">
-          <textarea name="description" [(ngModel)]="game.description" rows="2" placeholder="Description" class="form-control"></textarea>
+          <input name="categoria" [(ngModel)]="game.categoria" rows="2" placeholder="Categoria" class="form-control">
         </div>
         <div class="form-group">
-          <input type="url" name="image URL" [(ngModel)]="game.image" placeholder="Image" class="form-control">
+          <input name="" [(ngModel)]="game.cantidad" type="number" rows="2" placeholder="Cantidad" class="form-control">
         </div>
+        <div class="form-group">
+          <input name="precio" [(ngModel)]="game.precio" rows="2" type="number" placeholder="Precio" class="form-control">
+        </div>
+       
+       
         <button class="btn btn-success btn-block" (click)="edit ? updateGame() : saveNewGame()">
           Save
         </button>
@@ -21,9 +26,8 @@
 
 <div class="col-md-4">
   <div class="card card-body text-center">
-  <img [src]="game.image == '' ? '/assets/noimage.png' : game.image" alt="No Image" class="card-img-top">
-    <h3>{{game.id}}. {{game.title == '' ? 'Game Title' : game.title}}</h3>
-    <p>{{game.description == '' ? 'Write your Descrition' : game.description}}</p>
-    <p>{{game.created_at | date: 'yyyy-MM-dd'}}</p>
+    <h3>{{game.id}}- {{game.nombre == '' ? 'Nombre' : game.categoria}}</h3>
+    <p>{{game.cantidad == '' ? 'Descripcion' : game.precio}}</p>
+    <p>{{game.fecha_registro | date: 'yyyy-MM-dd'}}</p>
   </div>
 </div>

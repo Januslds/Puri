@@ -1,0 +1,39 @@
+
+
+<div class="container">
+  <h2>Nuevo Prepago</h2>
+  <table>
+    <!-- Recorre la lista de juegos -->
+   
+      <td>
+        <form>
+          <div class="form-group" *ngIf="clients && clients.length > 0">
+            <label for="cliente">Seleccionar Cliente</label>
+            <select id="cliente" name="cliente" [(ngModel)]="clients.cliente" class="form-control" required>
+              <option *ngFor="let clients of clients" [value]="clients.cliente">{{clients.cliente}}</option>
+            </select>
+          </div>
+          <div *ngIf="!clients || clients.length === 0">
+            <p>No se han cargado clientes o la lista está vacía.</p>
+          </div>
+            <!-- Unidades -->
+            <div class="form-group">
+                <label for="unidades">Unidades</label>
+                <input type="number" id="unidades" name="unidades" placeholder="Número de unidades" class="form-control" required>
+            </div>
+
+            <!-- Total -->
+            <div class="form-group">
+                <label for="total">Total</label>
+                <input type="number" id="total" name="total" placeholder="Total a pagar" class="form-control" required>
+            </div>
+
+         
+
+            <!-- Botón de Enviar -->
+            <button type="submit" class="btn">Guardar</button>
+        </form>
+      </td>
+   
+  </table>
+</div>

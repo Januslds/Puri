@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Game } from '../models/Game';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,24 +13,25 @@ export class GamesService {
 
   constructor(private http: HttpClient) { }
 
-  getGames() {
-    return this.http.get(`${this.API_URI}/games`);
+  getGames(): Observable<Game[]> {
+    return this.http.get<Game[]>(`${this.API_URI}/games`);
   }
 
-  getGame(id: string) {
-    return this.http.get(`${this.API_URI}/games/${id}`);
+  getGame(id: string): Observable<Game> {
+    return this.http.get<Game>(`${this.API_URI}/games/${id}`);
   }
 
-  deleteGame(id: string) {
+  deleteGame(id: string): Observable<any> {
     return this.http.delete(`${this.API_URI}/games/${id}`);
   }
 
-  saveGame(game: Game) {
-    return this.http.post(`${this.API_URI}/games`, game);
+  saveGame(game: Game): Observable<Game> {
+    return this.http.post<Game>(`${this.API_URI}/games`, game);
   }
 
-  updateGame(id: string|number, updatedGame: Game): Observable<Game> {
-    return this.http.put(`${this.API_URI}/games/${id}`, updatedGame);
+  updateGame(id: string | number, updatedGame: Game): Observable<Game> {
+    return this.http.put<Game>(`${this.API_URI}/games/${id}`, updatedGame);
   }
 
+  
 }

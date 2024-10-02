@@ -1,0 +1,77 @@
+<div class="col-md-4 offset-md-2">
+  <div class="card">
+    <div class="card-body">
+      <form (ngSubmit)="edit ? updateGame() : saveNewGame()" #gameForm="ngForm">
+
+        <div class="form-group">
+          <label for="vendor">Vendedor</label>
+          <select name="vendor" id="vendedor" [(ngModel)]="game.vendedor" class="form-control" required>
+            <option value="" disabled selected>Seleccione un vendedor</option>
+            <option value="mostrador">Mostrador</option>
+            <option value="repartidor 1">Repartidor 1</option>
+            <option value="repartidor 2">Repartidor 2</option>
+            <option value="repartidor 3">Repartidor 3</option>
+            <option value="repartidor 4">Repartidor 4</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="vendor">Cliente</label>
+          <input type="text" name="cliente" [(ngModel)]="game.cliente" placeholder="Nombre del cliente" class="form-control">
+        </div>
+
+        <!-- Unidades Input -->
+        <div class="form-group">
+          <label for="telefono"># Teléfono</label>
+          <input type="number" name="telefono" [(ngModel)]="game.telefono" placeholder="Número de teléfono" class="form-control" required min="1">
+          <div *ngIf="gameForm.submitted && game.telefono == 0" class="text-danger">
+            El número de teléfono debe ser mayor que 0.
+          </div>
+        </div>
+
+        <!-- Unidades Input -->
+        <div class="form-group">
+          <label for="unidades">Unidades</label>
+          <input type="number" name="unidades" [(ngModel)]="game.unidades" placeholder="Cantidad" class="form-control" required min="1">
+          <div *ngIf="gameForm.submitted && game.unidades == 0" class="text-danger">
+            Las unidades deben ser mayores que 0.
+          </div>
+        </div>
+
+        <!-- Precio Unitario Input -->
+        <div class="form-group">
+          <label for="precio">Precio Unitario</label>
+          <input type="number" name="precio_unitario" [(ngModel)]="game.precio_unitario" placeholder="Precio" class="form-control" required min="1">
+          <div *ngIf="gameForm.submitted && game.precio_unitario == 0" class="text-danger">
+            El precio unitario debe ser mayor que 0.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="tipo">Tipo</label>
+          <select name="tipo" id="tipo" [(ngModel)]="game.tipo" class="form-control" required>
+            <option value="" disabled selected>Seleccione un tipo</option>
+            <option value="relleno">Relleno</option>
+            <option value="domicilio">Domicilio</option>
+            <option value="ruta">Ruta</option>
+          </select>
+        </div>
+       
+        <!-- Save Button -->
+        <button type="submit" class="btn btn-success btn-block" (click)="validateAndSubmit()">
+          {{ edit ? 'Update' : 'Guardar' }}
+        </button>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--
+<div class="col-md-4">
+  <div class="card card-body text-center">
+    <h3>{{game.id}}- {{game.nombre == '' ? 'Nombre' : game.categoria}}</h3>
+    <p>{{game.cantidad == '' ? 'Descripcion' : game.precio}}</p>
+    <p>{{game.fecha_registro | date: 'yyyy-MM-dd'}}</p>
+  </div>
+</div>-->

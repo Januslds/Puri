@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
@@ -8,9 +8,13 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { GamesListComponent } from './components/games-list/games-list.component';
 
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+
 // Services
 import { GamesService } from './services/games.service';
 import { GameFormComponent } from './components/game-form/game-form.component';
+registerLocaleData(localeEs);
 
 @NgModule({
   declarations: [
@@ -26,7 +30,8 @@ import { GameFormComponent } from './components/game-form/game-form.component';
     FormsModule
   ],
   providers: [
-    GamesService
+    GamesService,
+    { provide: LOCALE_ID, useValue: 'es-ES' }
   ],
   bootstrap: [AppComponent]
 })

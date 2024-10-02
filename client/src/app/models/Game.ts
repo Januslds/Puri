@@ -2,8 +2,9 @@ import { Title } from '@angular/platform-browser';
 
 export interface Game {
     id?: number,
-    title?: string,
-    description?: string,
-    image?: string,
-    created_at?: Date
+    nombre?: string,
+    categoria?: string,
+    cantidad?: number,
+    precio?: number
+    fecha_registro?: Date
 };
