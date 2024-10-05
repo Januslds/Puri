@@ -49,3 +49,6 @@ CREATE TABLE prepago (
     fechaConsumo TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, -- Fecha de consumo que se actualiza automáticamente
     unidadesTotal INT NOT NULL
 );
+
+
+sudo kill 38137
